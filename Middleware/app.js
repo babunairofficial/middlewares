@@ -2,12 +2,8 @@ const express = require("express");
 const app = express();
 
 app.use((req, res, next) => {
-    console.log("hi, I am 1st middleware");
-    next();
-});
-
-app.use((req, res, next) => {
-    console.log("hi I am 2nd middleware");
+    req.time = new Date(Date.now()).toString();
+    console.log(req.method, req.hostname, req.path, req.time);
     next();
 })
 app.get("/", (req, res) => {
