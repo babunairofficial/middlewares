@@ -21,6 +21,11 @@ const checkToken = (req, res, next) => {
     res.send("ACCESS DENIED!");
 };
 
+//understanding default error handlers of express
+app.get("/wrong", (req, res) => {
+    abcd=abcd;
+})
+
 app.get("/api", checkToken, (req, res) => { //multiple middlewares used here
     res.send("data");
 });
