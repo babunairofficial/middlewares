@@ -40,8 +40,8 @@ app.get("/random", (req, res) => {
 });
 
 app.use((err, req, res, next) => {
-    console.log("--------ERROR--------");
-    next(err); //if err not passed, next() would look for next non-error handling middleware
+    let { status = 500, message = "some error has occured" } = err; //default status code and default message
+    res.status(status).send(message);
 });
 
 app.listen(8080, () => {
