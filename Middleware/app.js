@@ -39,6 +39,10 @@ app.get("/random", (req, res) => {
     res.send("this is a random page")
 });
 
+app.get("/admin", (req, res) =>{
+    throw new ExpressError(403, "Access to admin is forbidden");
+});
+
 app.use((err, req, res, next) => {
     let { status = 500, message = "some error has occured" } = err; //default status code and default message
     res.status(status).send(message);
